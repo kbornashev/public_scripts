@@ -1,0 +1,13 @@
+[Unit]
+Description=Start xterm with journalctl logs
+After=graphical.target
+
+[Service]
+ExecStart=/usr/bin/xterm -hold -e "journalctl -p 3 -f"
+Restart=always
+User=YOUR_USERNAME
+Environment=DISPLAY=:0
+
+[Install]
+WantedBy=default.target
+
