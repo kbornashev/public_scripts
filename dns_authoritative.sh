@@ -8,7 +8,7 @@ echo "🔍 Checking authoritative name servers for: $DOMAIN"
 echo
 NS_SERVERS=$(dig +short NS "$DOMAIN")
 if [ -z "$NS_SERVERS" ]; then
-  echo "❌ No NS records found for $DOMAIN"
+  echo "No NS records found for $DOMAIN"
   exit 2
 fi
 for ns in $NS_SERVERS; do
