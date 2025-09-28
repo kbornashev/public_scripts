@@ -15,12 +15,12 @@ for ns in $NS_SERVERS; do
   ns=${ns%.}  # Remove trailing dot
   IPS=$(dig +short "$ns")
   for ip in $IPS; do
-    echo "➡️  Querying $ip ($ns)..."
+    echo "Querying $ip ($ns)..."
     OUT=$(dig @"$ip" "$DOMAIN" NS +norecurse)
     if echo "$OUT" | grep -q "flags:.* aa[ ;]"; then
-      echo "✅ $ip is authoritative for $DOMAIN"
+      echo "$ip is authoritative for $DOMAIN"
     else
-      echo "⚠️  $ip is NOT authoritative for $DOMAIN"
+      echo "$ip is NOT authoritative for $DOMAIN"
     fi
     echo
   done
